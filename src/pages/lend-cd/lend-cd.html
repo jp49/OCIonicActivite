@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-navbar>
+    <ion-buttons>
+      <button ion-button clear (click)="dismissModal()">
+        Fermer
+      </button>
+    </ion-buttons>
+    <ion-title>{{ cd.title }}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-card [ngClass]="{'is-on': cd.isLend, 'is-off': !cd.isLend}">
+    <ion-card-header>{{ cd.title }}</ion-card-header>
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <button ion-button full
+                  color="secondary"
+                  [disabled]="cd.isLend"
+                  (click)="onChangeStatus(cd)">Prêter</button>
+        </ion-col>
+        <ion-col>
+          <button ion-button full
+                  color="danger"
+                  [disabled]="!cd.isLend"
+                  (click)="onChangeStatus(cd)">Rendre</button>
+
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-card>
+</ion-content>
